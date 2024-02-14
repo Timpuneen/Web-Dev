@@ -1,17 +1,17 @@
 const inputBox = document.getElementById("input-box");
 const listContainer = document.getElementById("list-container");
-//let toDoCounter = 0;
+let toDoCounter = 0;
 
 function addTask(){
     if(inputBox.value == ''){
         alert("Add a task!");
     } else {
-        // if(toDoCounter==0){
-        //     let clrall = document.createElement("button");
-        //     clrall.id="btn";
-        //     clrall.textContent="Clear all";
-        //     listContainer.appendChild(clrall);
-        // }
+        if(toDoCounter==0){
+            let clrall = document.createElement("button");
+            clrall.id="btn";
+            clrall.textContent="Clear all";
+            listContainer.appendChild(clrall);
+        }
         let li = document.createElement("li");
         li.innerHTML = inputBox.value;
         listContainer.appendChild(li);
@@ -31,16 +31,27 @@ listContainer.addEventListener("click", function(e){
         saveData();
     } else if(e.target.tagName === "SPAN"){
         e.target.parentElement.remove();
-        //toDoCounter--;
-        //if(toDoCounter==0)document.getElementById("btn").remove();
+        toDoCounter--;
+        if(toDoCounter==0)document.getElementById("btn").remove();
+        saveData();
+    }
+    else if(e.target.id==="btn"){
+        var divElements = document.querySelectorAll('li');
+        divElements.forEach(function(element) {
+            element.remove();
+        });
+        document.getElementById("btn").remove();
+        toDoCounter=0;
         saveData();
     }
 }, false);
 
 function saveData(){
     localStorage.setItem("data", listContainer.innerHTML);
+    localStorage.setItem("counter", toDoCounter);
 }
 function showTask(){
     listContainer.innerHTML = localStorage.getItem("data");
+    toDoCounter=localStorage.getItem("counter");
 }
 showTask();
