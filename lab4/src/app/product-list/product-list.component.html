@@ -1,0 +1,22 @@
+<h2>Products</h2>
+<div class="biglist">
+  <div *ngFor="let product of products" class="item">
+    <div class="content">
+
+      <span class="img">
+        <h3>
+          <a [title]="product.name + ' details'" [routerLink]="['/products', product.id]">
+            {{ product.name }}
+          </a>
+        </h3>
+        <img [src]="product.image" alt="{{ product.name }} image">
+      </span>
+      
+      <p *ngIf="product.description" class="description">Description: {{ product.description }}</p>
+    </div>
+    <div class="actions">
+      <button type="button" class="share-button" (click)="share(product.link)">Share on Telegram</button>
+      <app-product-alerts [product]="product" (notify)="onNotify()"></app-product-alerts>
+    </div>
+  </div>
+</div>

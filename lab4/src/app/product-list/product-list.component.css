@@ -1,0 +1,41 @@
+.content img{
+    width: 150px;
+    height: 200px;
+}
+.biglist {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    height: 200px;
+}
+  
+  .item {
+    border: 2px solid blue;
+    display: flex;
+    flex-direction: column; /* Align items vertically */
+    margin: 20px;
+    padding: 10px;
+    width: 400px;
+    gap: 30px;
+  }
+  
+  .item .content {
+    flex: 1; /* Take remaining space */
+  }
+  
+  .description {
+    margin-top: 10px; /* Add margin to separate description from other content */
+  }
+  
+  .actions {
+    margin-top: auto; /* Push actions to the bottom */
+    display: inline;
+    flex-direction: column; /* Align buttons vertically */
+    gap: 10px; /* Add gap between buttons */
+  }
+  
+  .share-button {
+    display: inline;
+    width: 150px; /* Set width for consistency */
+  }
+  
