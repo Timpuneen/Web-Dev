@@ -7,6 +7,10 @@ function addTask(){
         alert("Add a task!");
     } else {
         if(toDoCounter==0){
+            let checkedBtn = document.createElement("button");
+            checkedBtn.id="check";
+            checkedBtn.textContent="check all";
+            listContainer.appendChild(checkedBtn);
             let clrall = document.createElement("button");
             clrall.id="btn";
             clrall.textContent="Clear all";
@@ -40,9 +44,16 @@ listContainer.addEventListener("click", function(e){
         divElements.forEach(function(element) {
             element.remove();
         });
+        document.getElementById("checked").remove();
         document.getElementById("btn").remove();
         toDoCounter=0;
         saveData();
+    }
+    else if(e.target.id==="check"){
+        var divElements = document.querySelectorAll('li');
+        divElements.forEach(function(element) {
+            element.classList.toggle("checked");
+        });
     }
 }, false);
 

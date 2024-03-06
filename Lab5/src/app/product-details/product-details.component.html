@@ -1,0 +1,19 @@
+<h2>Product Details</h2>
+
+<div *ngIf="product">
+
+  <div class="gallery">
+    <button (click)="prevPhoto(product)" [disabled]="currentPhotoIndex === 0">Previous</button>
+    <div class="photo">
+      <img [src] = product.image[currentPhotoIndex] [alt] = product.name>
+    </div>
+    <button (click)="nextPhoto(product)" [disabled]="currentPhotoIndex === product.image.length - 1">Next</button>
+  </div>
+
+    <h3>{{ product.name }}</h3>
+    <h4>{{ product.price | currency }}</h4>
+    <p>{{ product.description }}</p>
+    <button type="button" (click)="addToCart(product)">Buy</button>
+
+  <div><a [href] = product.link><img src = "https://play-lh.googleusercontent.com/w2UcnrRAfBTW-HbV4NGk2Tte1jR5TTXVH81oUUxxZHNTnk_fp3AZIuMKo5XSsvR5b5c" alt = "kaspi"></a></div>
+</div>

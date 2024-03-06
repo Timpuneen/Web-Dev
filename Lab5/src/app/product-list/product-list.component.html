@@ -1,0 +1,41 @@
+<h2>Products</h2>
+
+<div class = "group">
+  <div *ngFor="let product of products">
+
+    <img [src] = product.image[0] [alt] = product.name>
+
+    <h3>
+      <a [title]="product.name + ' details'" [routerLink]="['/products', product.id]">
+        {{ product.name }}
+      </a>
+    </h3>
+
+    <p *ngIf="product.rating">
+      <strong>Rating: {{ product.rating }}</strong>
+    </p>
+
+    <p *ngIf="product.description">
+      Description: {{ product.description }}
+    </p>
+
+    <div class = "buttons-for">
+      <button type="button" (click)="share(product.link)">
+        Share
+      </button>
+
+      <button type="button" (click)="putLike(product)">
+        Like
+      </button>
+
+      <button (click)="removeProduct(product)">
+        Remove
+      </button>
+    </div>
+
+    <p class="likee" *ngIf="product.likes">
+      {{ product.likes }}
+    </p>
+
+  </div>
+</div>

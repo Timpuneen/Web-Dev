@@ -1,0 +1,14 @@
+* {
+  margin: 10px;
+}
+
+a h2{
+  padding: 10px;
+  width: 1400px;
+  background-color: #1976d2;
+}
+
+h2{
+  background-color: #1976d2;
+  font-weight: bold;
+}
